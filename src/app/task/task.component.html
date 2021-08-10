@@ -1,0 +1,29 @@
+<a routerLink="/create">
+    <button class="create">create</button>
+  </a>
+  <h2>My Heroes</h2>
+  <ul>
+    <table class="heroesTable" >
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let hero of heroes">
+          <td>{{hero.idHero}}</td>
+          <td>{{hero.name}}</td>
+          <td>{{hero.surname}}</td>
+          <td>
+            <a routerLink="/update/{{hero.idHero}}">
+              <button class="update">Update</button>
+            </a>
+            <button class="delete" (click)="delete(hero)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ul>

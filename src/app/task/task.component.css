@@ -1,0 +1,57 @@
+.heroesTable {
+    border-collapse: collapse;
+    width: 103%;
+    margin-left: -40px;
+  }
+  
+  .heroesTable td, .heroesTable th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .heroesTable tr:nth-child(even){background-color: #f2f2f2;}
+  
+  .heroesTable th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+    width: 20%;
+  }
+  
+  .delete, .update {
+    border: none;
+    color: white;
+    padding: 8px 50px;
+    text-align: center;
+    font-size: 16px;
+    margin: 4px 2px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    width: -20%;
+  }
+  .delete { background-color: red;}
+  
+  .update { background-color: blue;}
+  
+  .create{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  
+  
+  }
+  
+  .delete:hover, .update:hover {opacity: 1}
+  
+  
+  
