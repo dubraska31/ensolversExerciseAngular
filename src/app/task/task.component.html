@@ -1,8 +1,9 @@
-<h2>Folders > </h2>
+<h2>Folders > {{folder.folderDescription}}</h2>
+
 <ul>
     <table class="heroesTable">
         <tbody>
-            <tr *ngFor="let task of taskList">
+            <tr *ngFor="let task of folder.task">
                 <td>
                     <input type="checkbox" [(ngModel)]="task.completed" (change)="updateTask(task)">
                 </td>

@@ -3,6 +3,10 @@ import { Task } from '../model/task';
 import { TaskService } from '../service/task.service';
 import { Location } from '@angular/common';
 
+import { Folder } from '../model/folder';
+import { FolderService } from '../service/folder.service';
+import { ActivatedRoute } from '@angular/router';
+
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
@@ -10,29 +14,28 @@ import { Location } from '@angular/common';
 })
 export class TaskComponent implements OnInit {
 
-  taskList: Task[] = [];
+  folder: Folder = new Folder();
   @Input() task: Task = new Task();
 
   constructor(
+    private route: ActivatedRoute,
     private taskService: TaskService,
+    private folderService: FolderService,
     private location: Location
   ) { }
 
   ngOnInit() {
-    this.task = new Task();
-    this.getTasks();
+    this.getFolderById();
   }
 
-  goBack(): void {
-    this.location.back();
-  }
-
-  getTasks(): void {
-    this.taskService.getTasks().subscribe(tasks => this.taskList = tasks);
+  getFolderById(): void {
+    const idFolder = + this.route.snapshot.paramMap.get('idFolder')!;
+    this.folderService.getFolderById(idFolder).subscribe(folder => this.folder = folder);
   }
 
   saveTask(): void {
-    this.taskService.saveTask(this.task).subscribe(task => { this.taskList.push(task); });
+    this.task.folder.idFolder = + this.route.snapshot.paramMap.get('idFolder')!;
+    this.taskService.saveTask(this.task).subscribe(task => { this.folder.task.push(task); });
 
     this.task.taskDescription = '';
     this.task.completed = false;
@@ -43,8 +46,12 @@ export class TaskComponent implements OnInit {
   }
 
   delete(task: Task): void {
-    this.taskList = this.taskList.filter(t => t !== task);
+    this.folder.task = this.folder.task.filter(t => t !== task);
     this.taskService.deleteTask(task).subscribe();
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }
