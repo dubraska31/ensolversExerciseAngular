@@ -18,11 +18,7 @@ export class FolderService {
     private http: HttpClient) { }
 
   getFolders(): Observable<Folder[]> {
-    return this.http.get<Folder[]>(this.folderUrl)
-      .pipe(
-        //tap(_ => this.log('fetched heroes')),
-        //catchError(this.handleError<Hero[]>('getHeroes', []))
-      );
+    return this.http.get<Folder[]>(this.folderUrl).pipe();
   }
 
   getFolderById(idFolder: number): Observable<Folder> {

@@ -1,1 +1,23 @@
+<h2>Folders</h2>
+<ul>
+    <table class="folderTable">
+        <tbody>
+            <tr *ngFor="let folder of folderList">
+                <td>- {{folder.folderDescription}}</td>
+                <td>
+                    <a routerLink="/task/{{folder.idFolder}}">
+                        <button class="buttonTransparent">View items</button>
+                    </a>
+                    <button class="buttonTransparent colorRed" (click)="delete(folder)">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</ul>
 
+<div *ngIf="folder">
+    <div class="inlineBlock">
+        <input [(ngModel)]="folder.folderDescription" class="add" placeholder="New Folder" />
+    </div>
+    <button class="marginLeft inlineBlock" (click)="saveFolder()">Add</button>
+</div>

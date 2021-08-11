@@ -1,21 +1,18 @@
-import { NgModule }             from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-
-
 import { TaskComponent } from './task/task.component';
 import { TaskUpdateComponent } from './task-update/task-update.component';
-
-
+import { FolderComponent } from './folder/folder.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/task', pathMatch: 'full' },
-  { path: 'task', component: TaskComponent },
-  { path: 'update/:id', component: TaskUpdateComponent },
-
+  { path: '', redirectTo: '/folder', pathMatch: 'full' },
+  { path: 'folder', component: FolderComponent },
+  { path: 'task/:idFolder', component: TaskComponent },
+  { path: 'update/:id', component: TaskUpdateComponent }
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
