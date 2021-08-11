@@ -9,7 +9,7 @@
                 </td>
                 <td>{{task.taskDescription}}</td>
                 <td>
-                    <a routerLink="/update/{{task.idTask}}">
+                    <a routerLink="/update/{{folder.idFolder}}/{{task.idTask}}">
                         <button class="buttonTransparent">Edit</button>
                     </a>
                     <button class="buttonTransparent colorRed" (click)="delete(task)">Delete</button>

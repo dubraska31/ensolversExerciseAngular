@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/folder', pathMatch: 'full' },
   { path: 'folder', component: FolderComponent },
   { path: 'task/:idFolder', component: TaskComponent },
-  { path: 'update/:id', component: TaskUpdateComponent }
+  { path: 'update/:idFolder/:idTask', component: TaskUpdateComponent }
 ];
 
 @NgModule({
