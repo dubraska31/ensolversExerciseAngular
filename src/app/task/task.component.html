@@ -3,25 +3,24 @@
     <table class="heroesTable">
         <tbody>
             <tr *ngFor="let task of taskList">
-                <td>{{task.completed}}</td>
+                <td>
+                    <input type="checkbox" [(ngModel)]="task.completed" (change)="updateTask(task)">
+                </td>
                 <td>{{task.taskDescription}}</td>
                 <td>
                     <a routerLink="/update/{{task.idTask}}">
-                        <button>Edit</button>
+                        <button class="buttonTransparent">Edit</button>
                     </a>
-                    <button (click)="delete(task)">Delete</button>
+                    <button class="buttonTransparent colorRed" (click)="delete(task)">Delete</button>
                 </td>
             </tr>
         </tbody>
     </table>
 </ul>
 
-<div class="form"*ngIf="task ">
-    <div>
-        <input [(ngModel)]="task.taskDescription" class="add" placeholder="New task" />
+<div *ngIf="task">
+    <div class="inlineBlock">
+        <input [(ngModel)]="task.taskDescription" class="add" placeholder="New Task" />
     </div>
-    <button class="saveTask" (click)="saveTask()" >Add</button>
+    <button class="marginLeft inlineBlock" (click)="saveTask()">Add</button>
 </div>
-
-
-

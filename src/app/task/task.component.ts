@@ -16,7 +16,7 @@ export class TaskComponent implements OnInit {
   constructor(
     private taskService: TaskService,
     private location: Location
-    ) { }
+  ) { }
 
   ngOnInit() {
     this.task = new Task();
@@ -36,6 +36,10 @@ export class TaskComponent implements OnInit {
 
     this.task.taskDescription = '';
     this.task.completed = false;
+  }
+
+  updateTask(task: Task): void {
+    this.taskService.updateTask(task).subscribe();
   }
 
   delete(task: Task): void {

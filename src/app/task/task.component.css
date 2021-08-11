@@ -8,4 +8,21 @@
   font-family: Arial;
 }
   
-  
+.buttonTransparent {
+  background-color: Transparent;
+  border: none;
+  cursor:pointer;
+  color: blue;
+}
+
+.colorRed {
+  color: red;
+}
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.marginLeft {
+  margin-left: 5px;
+}

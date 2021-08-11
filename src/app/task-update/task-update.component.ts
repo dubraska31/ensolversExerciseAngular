@@ -35,4 +35,5 @@ export class TaskUpdateComponent implements OnInit {
   updateTask(): void {
     this.taskService.updateTask(this.task).subscribe(() => this.goBack());
   }
+
 }
