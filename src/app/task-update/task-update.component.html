@@ -1,0 +1,11 @@
+
+<div class="form" *ngIf="task ">
+    <h2>Edit taks </h2>
+  
+    <div>
+        <input [(ngModel)]="task.taskDescription" type="text" id="fname" placeholder=""/>
+    </div>
+  
+    <button class="goback" (click)="goBack()" >Go back</button>
+    <button class="up"(click)="updateTask()">Update</button>
+  </div>

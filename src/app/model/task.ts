@@ -1,6 +1,5 @@
 export class Task {
-    idTask: number;
-    taskDescription: string;
-    completed: string;
-  }
-  
+  idTask: number = 0;
+  taskDescription: string = '';
+  completed: boolean = false;
+}

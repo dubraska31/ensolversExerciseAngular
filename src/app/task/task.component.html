@@ -1,29 +1,27 @@
-<a routerLink="/create">
-    <button class="create">create</button>
-  </a>
-  <h2>My Heroes</h2>
-  <ul>
-    <table class="heroesTable" >
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Surname</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let hero of heroes">
-          <td>{{hero.idHero}}</td>
-          <td>{{hero.name}}</td>
-          <td>{{hero.surname}}</td>
-          <td>
-            <a routerLink="/update/{{hero.idHero}}">
-              <button class="update">Update</button>
-            </a>
-            <button class="delete" (click)="delete(hero)">Delete</button>
-          </td>
-        </tr>
-      </tbody>
+<h2>To-Do List</h2>
+<ul>
+    <table class="heroesTable">
+        <tbody>
+            <tr *ngFor="let task of taskList">
+                <td>{{task.completed}}</td>
+                <td>{{task.taskDescription}}</td>
+                <td>
+                    <a routerLink="/update/{{task.idTask}}">
+                        <button>Edit</button>
+                    </a>
+                    <button (click)="delete(task)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
     </table>
-  </ul>
+</ul>
+
+<div class="form"*ngIf="task ">
+    <div>
+        <input [(ngModel)]="task.taskDescription" class="add" placeholder="New task" />
+    </div>
+    <button class="saveTask" (click)="saveTask()" >Add</button>
+</div>
+
+
+

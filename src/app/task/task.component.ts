@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Task } from '../model/task';
+import { TaskService } from '../service/task.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-task',
@@ -7,30 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskComponent implements OnInit {
 
-  heroes: Hero[];
-  @Input() hero: Hero;
+  taskList: Task[] = [];
+  @Input() task: Task = new Task();
 
-  constructor(private heroService: HeroService) { }
+  constructor(
+    private taskService: TaskService,
+    private location: Location
+    ) { }
 
   ngOnInit() {
-    this.hero = new Hero();
-    this.getHeroes();
+    this.task = new Task();
+    this.getTasks();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+  goBack(): void {
+    this.location.back();
   }
 
-  saveHero(): void {
-    this.heroService.saveHero(this.hero).subscribe(hero => { this.heroes.push(hero); });
-
-    this.hero.name = '';
-    this.hero.surname = ''
+  getTasks(): void {
+    this.taskService.getTasks().subscribe(tasks => this.taskList = tasks);
   }
 
-  delete(hero: Hero): void {
-    this.heroes = this.heroes.filter(h => h !== hero);
-    this.heroService.deleteHero(hero).subscribe();
+  saveTask(): void {
+    this.taskService.saveTask(this.task).subscribe(task => { this.taskList.push(task); });
+
+    this.task.taskDescription = '';
+    this.task.completed = false;
+  }
+
+  delete(task: Task): void {
+    this.taskList = this.taskList.filter(t => t !== task);
+    this.taskService.deleteTask(task).subscribe();
   }
 
 }
