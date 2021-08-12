@@ -42,10 +42,14 @@ export class TaskComponent implements OnInit {
   }
 
   updateTask(task: Task): void {
+    task.folder = new Folder();
+    task.folder.idFolder = this.folder.idFolder;
+    task.folder.folderDescription = this.folder.folderDescription;
     this.taskService.updateTask(task).subscribe();
   }
 
   delete(task: Task): void {
+    task.folder = new Folder();
     this.folder.task = this.folder.task.filter(t => t !== task);
     this.taskService.deleteTask(task).subscribe();
   }

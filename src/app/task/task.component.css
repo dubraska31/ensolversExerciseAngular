@@ -26,3 +26,7 @@
 .marginLeft {
   margin-left: 5px;
 }
+
+.cursorPointer {
+  cursor:pointer;
+}
